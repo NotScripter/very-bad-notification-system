@@ -1,0 +1,36 @@
+local id = Instance.new("Sound")
+local ht = game:GetService("HttpService")
+spawn(function()
+       while wait() do
+              id.Name = ht:GenerateGUID(true)
+              end
+end)
+id.Parent = workspace.CurrentCamera
+id.SoundId = "rbxassetid://575266163"
+id.Looped = false
+id.Volume = 2
+
+local function play()
+       id:Play()
+end
+local function loop()
+       id.Looped = true
+end
+local function stoploop()
+       id.Looped = false
+end
+local defualttitle = "notification"
+local defaultdesc = "welcome to notification system"
+_G.notify = function(Title: string, Description: string)
+       script.Parent.Notification.Visible = true
+       play()
+
+       local titles = Title or defualttitle or ""
+       local desc = Description or defaultdesc or ""
+
+
+       
+       script.Parent.Notification.Title.Text = titles
+       script.Parent.Notification.Description.Text = desc
+end
+-- do _G.notify("title","Description") after the loadstring
