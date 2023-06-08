@@ -1,36 +1,116 @@
-local id = Instance.new("Sound")
-local ht = game:GetService("HttpService")
-spawn(function()
-       while wait() do
-              id.Name = ht:GenerateGUID(true)
-              end
-end)
-id.Parent = workspace.CurrentCamera
-id.SoundId = "rbxassetid://575266163"
-id.Looped = false
-id.Volume = 2
+--[[
 
-local function play()
-       id:Play()
-end
-local function loop()
-       id.Looped = true
-end
-local function stoploop()
-       id.Looped = false
-end
-local defualttitle = "notification"
-local defaultdesc = "welcome to notification system"
-_G.notify = function(Title: string, Description: string)
-       script.Parent.Notification.Visible = true
-       play()
+		Gui2Lua™
+		10zOfficial
+		Version 1.0.0
 
-       local titles = Title or defualttitle or ""
-       local desc = Description or defaultdesc or ""
+]]
 
 
-       
-       script.Parent.Notification.Title.Text = titles
-       script.Parent.Notification.Description.Text = desc
+-- Instances
+
+local Notify = Instance.new("ScreenGui")
+local Notification = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local Title = Instance.new("TextLabel")
+local Description = Instance.new("TextLabel")
+
+-- Properties
+
+Notify.Name = "Notify"
+Notify.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+Notify.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Notification.Name = "Notification"
+Notification.Parent = Notify
+Notification.BackgroundColor3 = Color3.new(0.0980392, 0.0980392, 0.0980392)
+Notification.Position = UDim2.new(0.915015638, 0, 0.878600836, 0)
+Notification.Size = UDim2.new(0, 151, 0, 65)
+Notification.Visible = false
+
+UICorner.Parent = Notification
+UICorner.CornerRadius = UDim.new(0, 4)
+
+Title.Name = "Title"
+Title.Parent = Notification
+Title.BackgroundColor3 = Color3.new(1, 1, 1)
+Title.BackgroundTransparency = 1
+Title.Position = UDim2.new(0.0198675487, 0, 0.189999983, 0)
+Title.Size = UDim2.new(0, 145, 0, 15)
+Title.Font = Enum.Font.GothamBlack
+Title.Text = "notification"
+Title.TextColor3 = Color3.new(0.952941, 0.952941, 0.952941)
+Title.TextScaled = true
+Title.TextSize = 14
+Title.TextStrokeColor3 = Color3.new(0.137255, 0.137255, 0.137255)
+Title.TextStrokeTransparency = 0.800000011920929
+Title.TextTransparency = 0.05000000074505806
+Title.TextWrapped = true
+
+Description.Name = "Description"
+Description.Parent = Notification
+Description.BackgroundColor3 = Color3.new(1, 1, 1)
+Description.BackgroundTransparency = 1
+Description.Position = UDim2.new(0.0198675506, 0, 0.406153798, 0)
+Description.Size = UDim2.new(0, 145, 0, 27)
+Description.Font = Enum.Font.GothamMedium
+Description.Text = "welcome to notification system"
+Description.TextColor3 = Color3.new(0.952941, 0.952941, 0.952941)
+Description.TextScaled = true
+Description.TextSize = 14
+Description.TextStrokeColor3 = Color3.new(0.137255, 0.137255, 0.137255)
+Description.TextStrokeTransparency = 0.800000011920929
+Description.TextTransparency = 0.46000000834465027
+Description.TextWrapped = true
+
+-- Scripts
+
+local function LJMHO_fake_script() -- Notify.LocalScript 
+	local script = Instance.new('LocalScript', Notify)
+
+	local id = Instance.new("Sound")
+	local ht = game:GetService("HttpService")
+	spawn(function()
+	       while wait() do
+	              id.Name = ht:GenerateGUID(true)
+	              end
+	end)
+	id.Parent = workspace.CurrentCamera
+	id.SoundId = "rbxassetid://575266163"
+	id.Looped = false
+	id.Volume = 2
+	
+	local function play()
+	       id:Play()
+	end
+	local function loop()
+	       id.Looped = true
+	end
+	local function stoploop()
+	       id.Looped = false
+	end
+	local defualttitle = "notification"
+	local defaultdesc = "welcome to notification system"
+	_G.notify = function(Title: string, Description: string)
+	       script.Parent.Notification.Visible = true
+	       play()
+	
+	       local titles = Title or defualttitle or ""
+	       local desc = Description or defaultdesc or ""
+	
+	
+	       
+	       script.Parent.Notification.Title.Text = titles
+	       script.Parent.Notification.Description.Text = desc
+	end
+	
+
 end
--- do _G.notify("title","Description") after the loadstring
+coroutine.wrap(LJMHO_fake_script)()
+local function YKTPPVM_fake_script() -- Notify.LocalScript 
+	local script = Instance.new('LocalScript', Notify)
+
+	wait(2)
+	_G.notify("","","")
+end
+coroutine.wrap(YKTPPVM_fake_script)()
